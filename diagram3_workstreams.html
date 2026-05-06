@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workstream Zusammenspiel – SAP IS-U ONE!</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{--bg:#F7F6F2;--surface:#FFFFFF;--border:#E2E0D8;--text:#1A1916;--text-2:#5A5750;--text-3:#9A9890;}
+  body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--text);padding:24px;}
+  h1{font-size:22px;font-weight:600;margin-bottom:4px;color:#1F3864;}
+  .subtitle{font-size:13px;color:var(--text-2);margin-bottom:20px;}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px;}
+  svg{width:100%;max-width:680px;display:block;margin:0 auto;cursor:pointer;}
+  .ws-node{cursor:pointer;}
+  .ws-node rect{transition:opacity .15s;}
+  .ws-node:hover rect{opacity:.85;}
+  #ws-detail{padding:14px 16px;border-radius:8px;margin-top:12px;font-size:13px;line-height:1.8;background:#F1EFE8;border:1px solid var(--border);min-height:100px;}
+  #ws-title{font-weight:600;font-size:14px;margin-bottom:8px;}
+  .dep-row{display:flex;align-items:baseline;gap:8px;margin:3px 0;flex-wrap:wrap;}
+  .dep-tag{display:inline-block;padding:2px 9px;border-radius:4px;font-size:11px;font-weight:500;}
+  .hint{font-size:11px;color:var(--text-3);margin-top:10px;}
+  .footer{font-size:11px;color:var(--text-3);text-align:center;margin-top:24px;}
+</style>
+</head>
+<body>
+<h1>Workstream Zusammenspiel</h1>
+<p class="subtitle">Klick auf einen Workstream um seine Abhängigkeiten zu sehen – SAP IS-U ONE! Neueinführung</p>
+<div class="card">
+<svg viewBox="0 0 680 510" xmlns="http://www.w3.org/2000/svg" id="ws-svg">
+<defs>
+  <marker id="aw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<!-- Kern -->
+<g class="ws-node" onclick="showWS('kern')">
+  <rect x="270" y="210" width="140" height="58" rx="28" fill="#F1EFE8" stroke="#888780" stroke-width="1.5"/>
+  <text font-family="IBM Plex Sans,sans-serif" font-weight="600" font-size="13" x="340" y="234" text-anchor="middle" fill="#444441">Kunde</text>
+  <text font-family="IBM Plex Sans,sans-serif" font-size="10" x="340" y="250" text-anchor="middle" fill="#5A5750">GP · Vertrag · Anlage</text>
+</g>
+<!-- WS3 Kundenservice -->
+<g class="ws-node" onclick="showWS('ws3')">
+  <rect x="265" y="40" width="150" height="54" rx="8" fill="#EAD1F5" stroke="#534AB7" stroke-width="1"/>
+  <text font-family="IBM Plex Sans,sans-serif" font-weight="600" font-size="12" x="340" y="62" text-anchor="middle" fill="#3C3489">Kundenservice</text>
+  <text font-family="IBM Plex Sans,sans-serif" font-size="10" x="340" y="78" text-anchor="middle" fill="#534AB7">WS3 · CRM · GP</text>
+</g>
+<!-- WS7 Netzanschluss -->
+<g class="ws-node" onclick="showWS('ws7')">
+  <rect x="58" y="40" width="160" height="54" rx="8" fill="#DAE3F3" stroke="#244185" stroke-width="1"/>
+  <text font-family="IBM Plex Sans,sans-serif" font-weight="600" font-size="12" x="138" y="62" text-anchor="middle" fill="#0C447C">Netzanschluss</text>
+  <text font-family="IBM Plex Sans,sans-serif" font-size="10" x="138" y="78" text-anchor="middle" fill="#244185">WS7 · NA · Anlage</text>
+</g>
+<!-- WS4 MaKo -->
+<g class="ws-node" onclick="showWS('ws4')">
+  <rect x="462" y="40" width="178" height="54" rx="8" fill="#FCE4D6" stroke="#C55A11" stroke-width="1"/>
+  <text font-family="IBM Plex Sans,sans-serif" font-weight="600" font-size="12" x="551" y="62" text-anchor="middle" fill="#833C00">Marktkommunikation</text>
+  <text font-family="IBM Plex Sans,sans-serif" font-size="10" x="551" y="78" text-anchor="middle" fill="#C55A11">WS4 · EDIFACT · WPC</text>
+</g>
+<!-- WS1 Abrechnung -->
+<g class="ws-node" onclick="showWS('ws1')">
+  <rect x="38" y="200" width="158" height="54" rx="8" fill="#DEEAF1" stroke="#2E75B6" stroke-width="1"/>
+  <text font-family="IBM Plex Sans,sans-serif" font-weight="600" font-size="12" x="117" y="222" text-anchor="middle" fill="#0C447C">Abrechnung</text>
+  <text font-family="IBM Plex Sans,sans-serif" font-size="10" x="117" y="238" text-anchor="middle" fill="#2E75B6">WS1 · Rechnung · Tarif</text>
+</g>
+<!-- WS8 VKK -->
+<g class="ws-node" onclick="showWS('ws8')">
+  <rect x="484" y="200" width="158" height="54" rx="8" fill="#E8E0F5" stroke="#4D3096" stroke-width="1"/>
+  <text font-family="IBM Plex Sans,sans-serif" font-weight="600" font-size="12" x="563" y="218" text-anchor="middle" fill="#26215C">Vertragskontokorrent</text>
+  <text font-family="IBM Plex Sans,sans-serif" font-size="10" x="563" y="236" text-anchor="middle" fill="#4D3096">WS8 · Zahlung · FI-CA</text>
+</g>
+<!-- WS5 Messdaten -->
+<g class="ws-node" onclick="showWS('ws5')">
+  <rect x="58" y="378" width="158" height="54" rx="8" fill="#D6E4F0" stroke="#1F3864" stroke-width="1"/>
+  <text font-family="IBM Plex Sans,sans-serif" font-weight="600" font-size="12" x="137" y="400" text-anchor="middle" fill="#042C53">Messdaten</text>
+  <text font-family="IBM Plex Sans,sans-serif" font-size="10" x="137" y="416" text-anchor="middle" fill="#1F3864">WS5 · Ablesung · MDM</text>
+</g>
+<!-- WS2 Geräteverwaltung -->
+<g class="ws-node" onclick="showWS('ws2')">
+  <rect x="222" y="398" width="118" height="54" rx="8" fill="#E2EFDA" stroke="#375623" stroke-width="1"/>
+  <text font-family="IBM Plex Sans,sans-serif" font-weight="600" font-size="12" x="281" y="420" text-anchor="middle" fill="#1A3A08">Geräteverwaltung</text>
+  <text font-family="IBM Plex Sans,sans-serif" font-size="10" x="281" y="436" text-anchor="middle" fill="#375623">WS2 · Zähler</text>
+</g>
+<!-- WS6 Messkonzept -->
+<g class="ws-node" onclick="showWS('ws6')">
+  <rect x="350" y="398" width="118" height="54" rx="8" fill="#F8CBAD" stroke="#833C00" stroke-width="1"/>
+  <text font-family="IBM Plex Sans,sans-serif" font-weight="600" font-size="12" x="409" y="420" text-anchor="middle" fill="#4A1B0C">Messkonzept</text>
+  <text font-family="IBM Plex Sans,sans-serif" font-size="10" x="409" y="436" text-anchor="middle" fill="#833C00">WS6 · MSB · GWA</text>
+</g>
+<!-- WS9 Workmanagement -->
+<g class="ws-node" onclick="showWS('ws9')">
+  <rect x="484" y="378" width="158" height="54" rx="8" fill="#EDEDED" stroke="#404040" stroke-width="1"/>
+  <text font-family="IBM Plex Sans,sans-serif" font-weight="600" font-size="12" x="563" y="400" text-anchor="middle" fill="#2C2C2A">Workmanagement</text>
+  <text font-family="IBM Plex Sans,sans-serif" font-size="10" x="563" y="416" text-anchor="middle" fill="#404040">WS9 · PM · Außendienst</text>
+</g>
+<!-- Connections -->
+<path d="M198 94 L288 224" stroke="#244185" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#aw)" fill="none"/>
+<path d="M340 94 L340 210" stroke="#534AB7" stroke-width="1.2" marker-end="url(#aw)" fill="none"/>
+<path d="M502 94 L396 224" stroke="#C55A11" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#aw)" fill="none"/>
+<path d="M270 233 L196 233" stroke="#2E75B6" stroke-width="1.2" marker-end="url(#aw)" fill="none"/>
+<path d="M484 225 L414 225" stroke="#4D3096" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#aw)" fill="none"/>
+<path d="M414 241 L484 241" stroke="#4D3096" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#aw)" fill="none"/>
+<path d="M158 378 L117 256" stroke="#1F3864" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#aw)" fill="none"/>
+<path d="M246 398 L196 434" stroke="#375623" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#aw)" fill="none"/>
+<path d="M368 416 L340 416" stroke="#833C00" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#aw)" fill="none"/>
+<path d="M484 390 L470 440" stroke="#404040" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#aw)" fill="none"/>
+<path d="M307 268 L172 376" stroke="#888780" stroke-width="0.8" stroke-dasharray="3 3" marker-end="url(#aw)" fill="none" opacity=".5"/>
+<!-- Legend -->
+<line x1="38" y1="488" x2="78" y2="488" stroke="#444441" stroke-width="1.2" marker-end="url(#aw)" fill="none"/>
+<text font-family="IBM Plex Sans,sans-serif" font-size="10" x="84" y="488" dominant-baseline="central" fill="#5A5750">Direkte Abhängigkeit</text>
+<line x1="240" y1="488" x2="280" y2="488" stroke="#888780" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#aw)" fill="none"/>
+<text font-family="IBM Plex Sans,sans-serif" font-size="10" x="286" y="488" dominant-baseline="central" fill="#5A5750">Lose Kopplung</text>
+</svg>
+</div>
+
+<div id="ws-detail"><div id="ws-title" style="color:var(--text-2)">Workstream anklicken</div><div id="ws-body" style="color:var(--text-2)">Klicke auf einen Workstream im Diagramm.</div></div>
+<p class="hint">Tipp: Klicke auf "Kunde" in der Mitte um den Kern zu sehen.</p>
+
+<p class="footer">SAP IS-U API Fragenkatalog · ONE! Neueinführung · Stand Mai 2026</p>
+
+<script>
+const wsData = {
+  kern:{title:"Kern – Geschäftspartner · Vertrag · Anlage",color:"#888780",deps:[
+    {ws:"WS3 Kundenservice",dir:"erstellt",what:"GP anlegen, Adresse, SEPA-Mandat"},
+    {ws:"WS7 Netzanschluss",dir:"erstellt",what:"Anlage und Anschlussobjekt anlegen"},
+    {ws:"WS4 Marktkommunikation",dir:"steuert",what:"Lieferantenwechsel, Ein/Auszug via WPC + EDIFACT"},
+    {ws:"WS1 Abrechnung",dir:"liest",what:"Vertragsdaten für Rechnungsstellung"},
+    {ws:"WS5 Messdaten",dir:"beliefert",what:"Zählwerte für Abrechnung"},
+  ]},
+  ws1:{title:"WS1 – Abrechnung",color:"#2E75B6",deps:[
+    {ws:"Kern (GP/Vertrag)",dir:"benötigt",what:"Vertragsdaten, Tarif, Verbrauchsstelle"},
+    {ws:"WS5 Messdaten",dir:"benötigt",what:"Ablesewerte und Zeitreihen"},
+    {ws:"WS8 Vertragskontokorrent",dir:"übergibt",what:"Rechnungsbeträge → FI-CA Zahlung/Mahnung"},
+    {ws:"WS4 Marktkommunikation",dir:"liefert",what:"INVOIC / MSCONS Energiemengen an LF"},
+  ]},
+  ws2:{title:"WS2 – Geräteverwaltung",color:"#375623",deps:[
+    {ws:"WS6 Messkonzept",dir:"benötigt",what:"Messrahmen definiert welcher Zähler verbaut wird"},
+    {ws:"WS5 Messdaten",dir:"beliefert",what:"Gerätestamm für Zählpunktzuordnung"},
+    {ws:"WS9 Workmanagement",dir:"erhält Aufträge",what:"PM-Aufträge für Montage / Demontage / Eichung"},
+    {ws:"WS7 Netzanschluss",dir:"erhält",what:"Neue Anlage → Gerätezuordnung"},
+  ]},
+  ws3:{title:"WS3 – Kundenservice",color:"#534AB7",deps:[
+    {ws:"Kern (GP/Vertrag)",dir:"erstellt",what:"GP anlegen, Adresse, Bank, SEPA-Mandat"},
+    {ws:"WS1 Abrechnung",dir:"liest",what:"Rechnungen, Verbrauch für Kundenauskunft"},
+    {ws:"WS8 Vertragskontokorrent",dir:"liest",what:"Offene Posten, Zahlungen"},
+    {ws:"WS7 Netzanschluss",dir:"initiiert",what:"Kundenanfrage → NA-Begehren"},
+    {ws:"WS9 Workmanagement",dir:"erstellt",what:"Serviceauftrag / Störmeldung → PM-Auftrag"},
+  ]},
+  ws4:{title:"WS4 – Marktkommunikation",color:"#C55A11",deps:[
+    {ws:"Kern (GP/Vertrag)",dir:"steuert",what:"LW, Ein/Auszug via WPC_PROCESS_START (RFC)"},
+    {ws:"WS6 Messkonzept",dir:"koordiniert",what:"MSB-Wechsel per UTILMD D11A"},
+    {ws:"WS5 Messdaten",dir:"liefert",what:"MSCONS D04A – Zählwerte an Lieferant"},
+    {ws:"WS1 Abrechnung",dir:"liefert",what:"INVOIC – Netznutzungsrechnung an LF"},
+    {ws:"Middleware",dir:"benötigt",what:"EDIFACT-Transport via AS2/SFTP"},
+  ]},
+  ws5:{title:"WS5 – Messdatenmanagement",color:"#1F3864",deps:[
+    {ws:"WS2 Geräteverwaltung",dir:"benötigt",what:"Gerätestamm für Zählpunktzuordnung"},
+    {ws:"WS1 Abrechnung",dir:"beliefert",what:"Ablesewerte und Zeitreihen"},
+    {ws:"WS4 Marktkommunikation",dir:"beliefert",what:"MSCONS – Zählwerte an LF / NB"},
+    {ws:"WS6 Messkonzept",dir:"benötigt",what:"Messrahmen definiert Erfassungsart"},
+    {ws:"WS9 Workmanagement",dir:"erhält",what:"Ableseaufträge aus PM-Aufträgen"},
+  ]},
+  ws6:{title:"WS6 – Messkonzept",color:"#833C00",deps:[
+    {ws:"WS2 Geräteverwaltung",dir:"steuert",what:"Messrahmen → welcher Zähler verbaut wird"},
+    {ws:"WS4 Marktkommunikation",dir:"koordiniert",what:"MSB-Wechsel per UTILMD (MsbG 2017)"},
+    {ws:"WS7 Netzanschluss",dir:"benötigt",what:"NA-Begehren definiert Messkonzept"},
+    {ws:"GWA-System (MSB)",dir:"kommuniziert",what:"SOAP IN/OUT – iMSys Parametrierung"},
+  ]},
+  ws7:{title:"WS7 – Netzanschluss",color:"#244185",deps:[
+    {ws:"Kern (GP/Vertrag)",dir:"erstellt",what:"Neue Anlage, Anschlussobjekt, MoveIn"},
+    {ws:"WS6 Messkonzept",dir:"definiert",what:"Messkonzept bei Neuanlage festlegen"},
+    {ws:"WS2 Geräteverwaltung",dir:"initiiert",what:"Neue Anlage → Gerätezuordnung"},
+    {ws:"WS3 Kundenservice",dir:"erhält",what:"NA-Begehren aus Kundenanfrage"},
+  ]},
+  ws8:{title:"WS8 – Vertragskontokorrent",color:"#4D3096",deps:[
+    {ws:"WS1 Abrechnung",dir:"erhält",what:"Rechnungsbeträge → FI-CA buchen"},
+    {ws:"Kern (GP/Vertrag)",dir:"benötigt",what:"Vertragskonto, GP für Zahlungszuordnung"},
+    {ws:"WS4 Marktkommunikation",dir:"liefert",what:"REMADV – Zahlungsavis an NB"},
+    {ws:"WS3 Kundenservice",dir:"beliefert",what:"Kontosaldo, offene Posten für Auskunft"},
+  ]},
+  ws9:{title:"WS9 – Workmanagement",color:"#404040",deps:[
+    {ws:"WS2 Geräteverwaltung",dir:"führt aus",what:"Montage, Demontage, Eichung via PM-Auftrag"},
+    {ws:"WS5 Messdaten",dir:"liefert",what:"Ableseaufträge → Ablesewerte zurück"},
+    {ws:"WS3 Kundenservice",dir:"erhält",what:"Serviceauftrag / Störmeldung → PM-Auftrag"},
+    {ws:"WS7 Netzanschluss",dir:"führt aus",what:"Inbetriebnahme-Auftrag vor Ort"},
+  ]}
+};
+const dirCol={erstellt:"#1D9E75",benötigt:"#185FA5",beliefert:"#185FA5",steuert:"#C55A11",koordiniert:"#C55A11",liefert:"#375623",erhält:"#534AB7","erhält Aufträge":"#534AB7",initiiert:"#0F6E56",kommuniziert:"#833C00",übergibt:"#2E75B6",liest:"#888780","führt aus":"#404040",definiert:"#244185"};
+function showWS(key) {
+  const d=wsData[key];
+  document.getElementById('ws-title').textContent=d.title;
+  document.getElementById('ws-title').style.color=d.color;
+  let html='';
+  d.deps.forEach(dep=>{
+    const col=dirCol[dep.dir]||"#888780";
+    html+=`<div class="dep-row"><span class="dep-tag" style="background:${col}18;color:${col};border:1px solid ${col}44">${dep.dir}</span><span style="font-weight:500;font-size:13px">${dep.ws}</span><span style="font-size:12px;color:var(--text-2)"> — ${dep.what}</span></div>`;
+  });
+  document.getElementById('ws-body').innerHTML=html;
+}
+showWS('kern');
+</script>
+</body>
+</html>

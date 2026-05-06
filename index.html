@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAP IS-U Diagramme – ONE! Neueinführung</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'IBM Plex Sans',sans-serif;background:#F7F6F2;color:#1A1916;padding:32px;}
+  h1{font-size:26px;font-weight:600;color:#1F3864;margin-bottom:6px;}
+  .sub{font-size:14px;color:#5A5750;margin-bottom:32px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
+  .card{background:#fff;border:1px solid #E2E0D8;border-radius:12px;padding:24px;text-decoration:none;color:inherit;display:block;transition:box-shadow .15s,transform .15s;}
+  .card:hover{box-shadow:0 4px 20px rgba(0,0,0,.1);transform:translateY(-2px);}
+  .card-num{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;}
+  .card-title{font-size:17px;font-weight:600;margin-bottom:6px;}
+  .card-desc{font-size:13px;color:#5A5750;line-height:1.6;}
+  .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:500;margin-top:12px;}
+  .footer{font-size:11px;color:#9A9890;text-align:center;margin-top:40px;}
+  .github{background:#1A1916;color:#fff;border-radius:8px;padding:16px 20px;margin-top:24px;}
+  .github h2{font-size:15px;font-weight:600;margin-bottom:8px;}
+  .github p{font-size:13px;color:#ccc;line-height:1.7;}
+  .github code{background:#333;padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px;}
+</style>
+</head>
+<body>
+<h1>SAP IS-U Diagramme</h1>
+<p class="sub">ONE! Neueinführung · Netze BW / Herrenberg · Stand Mai 2026</p>
+
+<div class="grid">
+  <a class="card" href="export_diagram1_edm_mdm.html">
+    <div class="card-num" style="color:#1F3864">01</div>
+    <div class="card-title">EDM vs MDM</div>
+    <div class="card-desc">Unterschied und Zusammenspiel zwischen Meter Data Management (SAP IS-U intern) und Energy Data Management (externes System / ZFA).</div>
+    <div class="badge" style="background:#D6E4F0;color:#1F3864">5 Tabs · Vergleichstabelle</div>
+  </a>
+  <a class="card" href="export_diagram2_mako.html">
+    <div class="card-num" style="color:#C55A11">02</div>
+    <div class="card-title">Marktkommunikation</div>
+    <div class="card-desc">Alle Systeme, Rollen und EDIFACT-Nachrichten: SAP IS-U, Middleware, EDI-Gateway, Lieferant, MSB/GWA. 5 Prozesse interaktiv.</div>
+    <div class="badge" style="background:#FCE4D6;color:#C55A11">5 Prozesse · Systemfluss</div>
+  </a>
+  <a class="card" href="export_diagram3_workstreams.html">
+    <div class="card-num" style="color:#534AB7">03</div>
+    <div class="card-title">Workstream Zusammenspiel</div>
+    <div class="card-desc">Wie die 9 Workstreams (WS1–WS9) zusammenhängen: wer liefert Daten an wen, welche Abhängigkeiten gibt es.</div>
+    <div class="badge" style="background:#EAD1F5;color:#534AB7">9 Workstreams · Abhängigkeiten</div>
+  </a>
+</div>
+
+<div class="github">
+  <h2>Online stellen mit GitHub Pages (kostenlos)</h2>
+  <p>
+    1. Alle 4 HTML-Dateien in einen Ordner legen<br>
+    2. GitHub-Konto erstellen → neues Repository anlegen (z.B. <code>sap-isu-diagramme</code>)<br>
+    3. Dateien hochladen (Drag & Drop im Browser)<br>
+    4. Settings → Pages → Branch: main → Save<br>
+    5. Deine URL: <code>https://DEINNAME.github.io/sap-isu-diagramme/</code><br><br>
+    Alternativ: <strong>Netlify.com</strong> → "Deploy manually" → Ordner reinziehen → fertig (30 Sekunden).
+  </p>
+</div>
+
+<p class="footer">Alle Diagramme sind vollständig offline nutzbar – kein Server nötig.</p>
+</body>
+</html>
